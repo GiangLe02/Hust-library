@@ -1,0 +1,48 @@
+{% extends "base.html" %} 
+
+{% block content %}
+<section class="section-qltt" style="display:flex">
+    <div class="row">
+      <div class="col span_1_of_3 column-qltt1">
+          <h2>ACCOUNT</h2>
+          <p>Nhân viên: Trịnh Thị Nguyệt Anh</p>
+          <p>Mã số Nhân viên: NV000001</p>
+          <h2>FUNCTIONS</h2>
+          <a href="#!"><p>Thêm sách</p></a>
+          <a href="#!"><p>Xóa sách</p></a>
+          <a href="#!"><p>Danh sách độc giả bị cảnh cáo</p></a>
+          <a href="#!"><p class="p-modify">Thông tin cá nhân</p></a>
+      </div>
+        <!-- <div class="col span_1_of_3 column-qltt" style="width: 10%;">
+        </div> -->
+        <div class="col span_2_of_3 column-qltt2">
+          <h2>THÔNG TIN CÁ NHÂN</h2>
+          <h3>Họ và tên</h3>
+          <form >
+              <input type="text" value="Trịnh Thị Nguyệt Anh" class="input-text">
+          </form>
+          <h3>Giới tính</h3>
+          <form style="display:inline">
+            <input type="radio" name="gender">
+            <label >Nam</label>
+            <!-- <input type="radio" name="gender" style="margin-left: 20px;">
+            <label >Nữ</label><br> -->
+          </form>
+          <h3>Ngày sinh</h3>
+          <form >
+              <input type="text" value="01/02/1980" class="input-text">
+          </form>
+          <h3>Email</h3>
+          <form >
+              <input type="text" value="nguyetanhcute@yahoo.com" class="input-text">
+          </form>
+          <h3>CMND</h3>
+          <form >
+              <input type="text" value="123456789" class="input-text">
+          </form>
+        </div>
+    </div>
+  </section>
+{% endblock %}
+  
+ 
