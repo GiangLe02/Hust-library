@@ -4,7 +4,8 @@ from .models import SinhVien
 from werkzeug.security import generate_password_hash, check_password_hash
 from . import db
 from flask_login import login_user, login_required, logout_user, current_user
-
+from flask import *
+import sqlite3
 auth = Blueprint('auth', __name__, template_folder='templates')
 
 @auth.route("/login", methods=['GET', 'POST'])
@@ -18,12 +19,12 @@ def login():
         # print(password, type(password))
         # print(check_password_hash(str(sinhVien.MSSV),password))
         if sinhVien:
-            if check_password_hash(str(sinhVien.MSSV),password):
+            if str(sinhVien.MSSV)==password:
                 flash('Logged in successfully!', category='success')
                 login_user(sinhVien, remember=True)
                 #remember the the member has already logged in 
-                print(str(sinhVien.MSSV))
-                return redirect(url_for('views.home', _external=True, _scheme='https'))
+                #print(str(sinhVien.MSSV))
+                return redirect(url_for('views.student_info',MSSV=sinhVien.MSSV, sinhVien=sinhVien))
             else:
                 flash('Incorrect password, try again.', category='error')
         else:
@@ -63,3 +64,12 @@ def signup():
             return redirect(url_for('views.home'))
 
     return render_template("signup.html", user=current_user)
+
+# @auth.route("/student_info")
+# def student_info(MSSV):
+#     connection = sqlite3.connect("fontend/database.db")
+#     connection.row_factory = sqlite3.Row
+#     cursor = connection.cursor()
+#     cursor.execute("select * from SinhVien WHERE ")
+#     rows = cursor.fetchall()
+#     return render_template("qlythongtinsv.html",rows = rows)
