@@ -1,17 +1,18 @@
 {% extends "base.html" %} 
 
 {% block content %}
+{% if sinhVien %}
 <section class="section-qltt" style="display:flex">
   <div class="row">
     <div class="col span_1_of_3 column-qltt1">
         <h2>ACCOUNT</h2>
-        <p>Họ và Tên: Mai Chiến Hữu</p>
-        <p>MSSV: 20205230</p>
-        <p>Mức cảnh cáo: 0</p>
+        <p>Họ và Tên: {{ sinhVien.HoTenSV }}</p>
+        <p>MSSV: {{ sinhVien.MSSV }}</p>
+        <p>Mức cảnh cáo: {{ sinhVien.MucCanhBao}}</p>
         <h2>FUNCTIONS</h2>
-        <a href="#!"><p>1 Tài liệu hiện đang mượn</p></a>
-        <a href="#!"><p class="p-modify">Chỉnh sửa thông tin cá nhân</p></a>
-        <a href="#!"><p>Tìm kiếm</p></a>
+        <a href="/student_borrow/{{ sinhVien.MSSV }}"><p>Tài liệu hiện đang mượn</p></a>
+        <a href="/student_info/{{ sinhVien.MSSV }}"><p class="p-modify">Chỉnh sửa thông tin cá nhân</p></a>
+        <a href="/timkiem/{{ sinhVien.MSSV }}"><p>Tìm kiếm</p></a>
         <a href="#!"><p>Gia hạn</p></a>
     </div>
       <!-- <div class="col span_1_of_3 column-qltt" style="width: 10%;">
@@ -20,32 +21,33 @@
         <h2>THÔNG TIN CÁ NHÂN</h2>
         <h3>Họ và tên</h3>
         <form >
-            <input type="text" value="Mai Chiến Hữu" class="input-text">
+            <input type="text" value="{{ sinhVien.HoTenSV }}" class="input-text">
         </form>
         <h3>Giới tính</h3>
         <form style="display:inline">
           <input type="radio" name="gender">
-          <label >Nam</label>
+          <label >{{ sinhVien.GioiTinhSV }}</label>
         </form>
         <h3>Ngày sinh</h3>
         <form >
-            <input type="text" value="01/02/2003" class="input-text">
+            <input type="text" value="{{ sinhVien.NgaySinhSV }}" class="input-text">
         </form>
         <h3>Email</h3>
         <form >
-            <input type="text" value="maichienhuu@sis.hust.edu.vn" class="input-text">
+            <input type="text" value="{{ sinhVien.EmailSV}}" class="input-text">
         </form>
         <h3>MSSV</h3>
         <form >
-            <input type="text" value="20205230" class="input-text">
+            <input type="text" value="{{ sinhVien.MSSV }}" class="input-text">
         </form>
         <h3>Mức cảnh cáo</h3>
         <form >
-            <input type="text" value="0" class="input-text">
+            <input type="text" value="{{ sinhVien.MucCanhBao }}" class="input-text">
         </form>
       </div>
   </div>
 </section>
+{% endif %}
 {% endblock %}
   
  
