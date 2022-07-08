@@ -28,7 +28,8 @@ class SinhVien(db.Model, UserMixin):
 	NgaySinhSV = db.Column(db.String(12))
 	EmailSV = db.Column(db.String(100), nullable=False)
 	MucCanhBao = db.Column(db.Integer)
-
+	def get_id(self):
+		return self.MSSV
 @hybrid_property
 def date(self):
 	# @todo: add python parsing of date and time to produce the result
@@ -58,6 +59,8 @@ class NhanVien(db.Model, UserMixin):
 	CMND = db.Column(db.String(12))
 	NgaySinhSV = db.Column(db.TEXT)
 	EmailNV = db.Column(db.String(100), nullable=False)
+def get_id(self):
+	return (str(self.MSNV))
 class NXB(db.Model):
 	__tablename__ = 'NXB' 
 	MaNXB = db.Column(db.String(20, convert_unicode=True), primary_key=True, nullable=False)
